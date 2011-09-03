@@ -1,0 +1,6 @@
+<%for product in @products%>
+<%=product.name%><br />
+<%end%>
+<%= link_to 'Редактировать', edit_today_path(@today) %> |
+<%= link_to 'Назад', todays_path %>|
+<%= link_to 'Удалить', @today, :confirm => 'Вы уверены?', :method => :delete %>

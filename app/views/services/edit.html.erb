@@ -1,0 +1,12 @@
+<div class='content'>
+
+<% form_for(@service) do |f| %>
+  <%= f.error_messages %>
+  <p><%= label_tag 'Изменить текст на странице О нас' %><br/>
+  	<%= f.text_area(:text, :size => "95x10") %>
+  </p>
+  <p>
+    <%= f.submit "Изменить" %>
+  </p>
+<% end %>
+</div>

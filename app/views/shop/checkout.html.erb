@@ -1,0 +1,39 @@
+<div class="content">
+<%= error_messages_for 'order' %>
+  <table>
+    <tr>
+      <td>
+<% form_for :order, :url => { :action => :save_order } do |form| %>
+<p>
+<%= label :order, :contact_name, "Имя:" %><br />
+<%= form.text_field :contact_name, :size => 35 %><br />
+</p>
+<p>
+<%= label :order, :contact_phone, "Телефон:" %><br />
+<%= form.text_field :contact_phone, :size => 35 %>
+</p>
+<p>
+<%= label :order, :adress, "Адрес:" %><br />
+<%= form.text_area :adress, :rows => 2, :cols => 40 %>
+</p>
+<p>
+<%= label :order, :comment, "Комментарий:" %><br />
+<%= form.text_area :comment, :rows => 2, :cols => 40 %>
+</p>
+
+<%= form.hidden_field :user_id, { :value => current_user.id } %>
+
+<%= submit_tag "Добавить заказ" , :class => "submit" %>
+<% end %>
+      </td>
+      <td>
+        <p/>Для оформления заказа заполните форму.
+
+        <p/>Пожалуйста, вносите настоящий контактный номер телефона и адрес, в противном случае заказ доставлен не будет.
+
+        <p/>Внимание! Если Вы не имеете возможность разогреть еду, оставте в комментариях — доставить горячим!
+
+      </td>
+    </tr>
+  </table>
+</div>

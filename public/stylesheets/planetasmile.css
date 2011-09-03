@@ -1,0 +1,217 @@
+body {
+	background-image: url("1.jpg");
+	padding:2px; margin:0; font-family:tahoma, arial, sans-serif; font-size:13px; text-decoration:none;  
+}
+
+h1 {
+	font-size:   16px;
+}
+
+h2 {
+	font-size:   14px;
+}
+
+a {
+	text-decoration:none;
+}
+
+table  {
+        border-spacing: 0px;
+}
+
+a img {
+	border:none;
+}
+
+
+#menu {
+	text-align:left;
+	height:46px;
+	width:1024px;
+	font-weight:bold;
+        background-color: #000;
+}
+#menu a {
+    padding-left: 10px;
+    color: #ffffff;
+}
+
+#menu a:visited {
+    color: #ffffff;
+}
+
+
+#root_img1 {
+	background-image:url('planet.jpg');
+	width:1024px;
+	height:420px;
+}
+
+#registration {
+	vertical-align:top;
+	text-align:left;
+	font-size:12px;
+	padding-left:20px;
+	padding-top:20px;
+        color: #FFFFFF;
+}
+
+#registration a{
+    color:#FFFFFF;
+}
+
+#registration a:visited{
+    color: #FFFFFF;
+}
+
+#cart {
+    vertical-align: top;
+    padding-top: 8px;
+}
+
+#show_cart {
+    min-height: 100px;
+    padding-left: 40px;
+}
+
+#cart_table {
+    width: 600px;
+}
+
+.line_price {
+    text-align: center;
+}
+
+#line_name {
+    text-align: left;
+}
+
+.total_price {
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.paginate {
+    text-align: center;
+    color: red;
+}
+
+.paginate a:visited {
+    color: blue;
+}
+
+#lr {
+	padding-left:20px;
+	font-size:14px;
+}
+
+#categories {
+        background-color: #000;
+	padding-left:10px;
+	padding-right:10px;
+        font-size: 14px;
+}
+
+#categories p {
+        display: inline;
+        padding-left: 10px;
+}
+
+#categories a {
+        color: #000;
+}
+
+#categories a:hover {
+	text-decoration:underline;
+}
+
+#categories a:visited {
+    color: #000;
+}
+
+#categories div {
+    padding-top: 10px;
+    background-color: #FFFFFF;
+    height: 30px;
+}
+
+#content {
+        width: 980px;
+	padding-left:10px;
+	padding-right:10px;
+        padding-bottom: 10px;
+        padding-top: 0px;
+        background-color: #FFFFFF;
+        border-left-style: solid;
+        border-left-width: 10px;
+        border-left-color: #000;
+        border-right-style: solid;
+        border-right-width: 10px;
+        border-bottom-style: solid;
+        border-bottom-width: 10px;
+}
+
+#content p {
+	text-indent:10px;
+	text-align:justify;	
+}
+
+#content h1 {
+	text-align:center;
+}
+
+#order table td{
+	border-left:outset;
+	border-left-color:black;
+	border-left-width:2px;
+	padding:0px 10px 0px 10px;
+}
+#ordertime {
+	width:100px;
+}
+.admtext {
+	text-align:center;
+}
+
+.product {
+	text-align:center;
+	display:inline-block;
+	width:22%;
+        border-style: ridge;
+        border-width: 1px;
+        border-color: #e9eff8;
+        margin: 10px;
+}
+
+.product_name {
+    min-height: 34px;
+}
+
+.description {
+	padding:10px;
+}
+
+#log a {
+	color: #FFFFFF;
+}
+
+#log a:hover {
+	background-color:#39c4d2;
+}
+
+#ao {
+	font-size:12px;
+}
+
+#ao a {
+	font-style:oblique;
+}
+
+#footer {
+	height:27px;
+	width:1016px;
+	margin-left:2px;
+}
+.message {
+	color:red;
+}

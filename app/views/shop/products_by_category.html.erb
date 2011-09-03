@@ -1,0 +1,14 @@
+<h1>Каталог блюд - <%=@category.name%></h1>
+<% for product in @products -%>
+<div class='product'>
+	
+  <h4 class="product_name"><%=h product.name %></h4>
+        	<%= link_to image_tag(product.photo.url(:medium)), product, :rel=>"facebox" %>
+        	<h4>Цена: <%= number_to_currency(product.price, :unit => 'руб', :format => "%n %u") %></h4>
+
+<br />	
+</div>
+<% end %>
+<br/>
+<br/>
+<%= will_paginate @products, :class=>'paginate' %>

@@ -1,0 +1,30 @@
+<h1>Добавить в каталог товар</h1>
+
+<% form_for :product, :url => products_path, :html => { :multipart => true } do |f| %>
+  
+  <%= f.error_messages %>
+  
+  <p><%= label_tag 'Путь к фото' %><br/>
+  	<%= f.file_field :photo %>
+  </p> 
+    
+  <p>Укажите название товара<br/>
+  	<%= f.text_field(:name) %>
+  </p>
+  
+  <p>Укажите описание товара<br/>
+  	<%= f.text_area(:description) %>
+  </p>
+
+  <p>Укажите цену товара<br/>
+  	<%= f.text_field(:price) %>
+  </p>
+
+  <%= select(:product, :category_id, Category.all.collect {|p| [p.name, p.id]}, {:include_blank => true, :selected => nil}) %>
+      
+  <p>
+    <%= f.submit "Добавить" %>
+  </p>
+<% end %>
+
+<%= link_to 'Назад', products_path %>

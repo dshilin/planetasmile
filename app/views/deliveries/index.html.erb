@@ -1,0 +1,15 @@
+<h1>Доставка</h1>
+
+<% for delivery in @deliveries %>
+  	<%= delivery.text %><br />
+<% end %>
+<% permitted_to? :manage, :deliveries do %>
+<div class='admtext'>
+	<% if Delivery.count.zero? %>
+		<%= link_to 'Добавить текст на страницу Доставка', new_delivery_path %>
+	<% else %>
+		<%= link_to 'Изменить текст на странице Доставка', edit_delivery_path(delivery) %> |
+		<%= link_to 'Удалить текст со страницы Доставка', delivery, :confirm => 'Вы уверены?', :method => :delete %>
+	<% end %>	
+</div>
+<%end%>

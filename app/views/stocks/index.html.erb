@@ -1,0 +1,15 @@
+<h1>Акции</h1>
+
+<% for stock in @stocks %>
+  	<%= stock.text %><br />
+<% end %>
+<% permitted_to? :manage, :stocks do %>
+<div class='admtext'>
+	<% if Stock.count.zero? %>
+		<%= link_to 'Добавить текст на страницу Акции', new_stock_path %>
+	<% else %>
+		<%= link_to 'Изменить текст на странице Акции', edit_stock_path(stock) %> |
+		<%= link_to 'Удалить текст со страницы Акции', stock, :confirm => 'Вы уверены?', :method => :delete %>
+	<% end %>
+</div>
+<%end%>

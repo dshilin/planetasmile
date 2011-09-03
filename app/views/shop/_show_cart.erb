@@ -1,0 +1,23 @@
+<div id="show_cart">
+<% if @cart.total_items > 0 %>
+<h1>Ваша корзина:</h1>
+<table id="cart_table">
+  <th>Название:</th>
+  <th>Количество:</th>
+  <th>Сумма:</th>
+<%= render(:partial => "cart_item" , :collection => @cart.items) %>
+
+<tr>
+<td class="total_price" colspan="2">Сумма заказа</td>
+<td class="total_price"><%= @cart.total_price %></td>
+</tr>
+
+<tr>
+<td><%= button_to "Оформить заказ" , :action => :checkout %></td>
+<td><%= button_to "Очистить" , :action => :empty_cart %></td>
+</tr>
+</table>
+<% else %>
+<h1>Ваша корзина пуста!</h1>
+<% end %>
+</div>

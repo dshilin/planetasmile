@@ -1,0 +1,11 @@
+<h1>Список всех меню</h1>
+<h2><%= link_to 'Создать меню', new_today_path %></h2>
+<table>
+<% for today in @today %>
+  <tr>
+  	<td><h2><%= link_to today.actual_date, today %></h2></td>
+  </tr>
+
+<% end %>
+</table>
+

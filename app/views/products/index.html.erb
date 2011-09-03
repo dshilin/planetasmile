@@ -1,0 +1,16 @@
+<h1>Каталог блюд</h1>
+<% permitted_to? :manage, :todays do %>
+<h2><%= link_to 'Просмотреть все меню', todays_path %></h2>
+<h2><%= link_to 'Создать меню', new_today_path %></h2>
+<%end%>
+<% for product in @products -%>
+<div class='product'>
+        	<%=h product.name %>
+        	<%= link_to image_tag(product.photo.url(:medium)), product %>
+        	<p>Цена: <%= number_to_currency(product.price, :unit => 'руб', :format => "%n %u") %></p>
+
+</div>
+<% end %><br /><br />
+<% permitted_to? :manage, :products do %>
+    <%= link_to 'Добавить элемент', new_product_path %>
+<% end %>

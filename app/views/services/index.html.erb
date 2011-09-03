@@ -1,0 +1,15 @@
+<h1>О нас</h1>
+
+<% for service in @services %>
+  	<%= service.text %><br />
+<% end %>
+<% permitted_to? :manage, :services do %>
+<div class='admtext'>
+	<% if Service.count.zero? %>
+		<%= link_to 'Добавить текст на страницу О нас', new_service_path %>
+	<% else %>
+		<%= link_to 'Изменить текст на странице О нас', edit_service_path(service) %> |
+		<%= link_to 'Удалить текст со страницы О нас', service, :confirm => 'Вы уверены?', :method => :delete %>
+	<% end %>	
+</div>
+<%end%>

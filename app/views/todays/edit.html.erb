@@ -1,0 +1,17 @@
+<h1>Изменить меню</h1>
+
+<% form_for(@today) do |f| %>
+  <%= f.error_messages %>
+<%= f.date_select :actual_date%>
+   <% for product in @products do%>
+        <li>
+          <%= check_box_tag 'product_ids[]', product.id %>
+          <%= h product.name -%>
+        </li>
+    <% end %>
+  <p>
+    <%= f.submit "Изменить" %>
+  </p>
+<% end %>
+
+<%= link_to 'Назад', todays_path %>

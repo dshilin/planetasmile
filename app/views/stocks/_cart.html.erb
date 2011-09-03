@@ -1,0 +1,1 @@
+<%= link_to "Ваша корзина содержит " + @cart.total_items.to_s + " товаров. Сумма покупки: " + @cart.total_price.to_s + " руб", {:controller=>:shop, :action=>:show_cart}, :id=>"rcart", :rel=>"facebox" %>

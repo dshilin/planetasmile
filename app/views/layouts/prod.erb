@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Доставка обедов домой и офис Балаково</title>
+        <%= javascript_include_tag 'jquery.js' %>
+	<%= javascript_include_tag 'facebox.js' %>
+        <%= javascript_include_tag :defaults %>
+	<%= stylesheet_link_tag 'planetasmile' %>
+        <%= stylesheet_link_tag 'facebox' %>
+  <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox({
+        loadingImage : '/facebox/loading.gif',
+        closeImage   : '/facebox/closelabel.png'
+      })
+    })
+  </script>
+
+
+</head>
+<body>
+<div align='center'>
+<table>
+    <tr id='root_img1'>
+		<td id='registration'>
+		<% if logged_in? %>
+		   <h1>Добро пожаловать за покупками!</h1>
+		   <% permitted_to? :manage, :orders do %>
+                   <h2><%= link_to 'Просмотреть заказы', orders_path %><br /></h2>
+		   <%end%>
+                   <h2><%= link_to "Выйти", logout_path   %></h2>
+		<%else%>
+			<% form_tag session_path do -%>
+			Логин:<br />
+			<%= text_field_tag 'login', @login %>
+			<br />
+			Пароль:<br />
+			<%= password_field_tag 'password', nil %>
+			<p/>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_function "Войти", "$(this).up('form').submit()" %> / <%=link_to 'Регистрация', '/signup', :rel=>"facebox"%>
+			<% end -%>
+		<%end%>
+                <div id="cart"><%= render(:partial => "cart" , :object => @cart)%></div>
+        </td>
+    </tr>
+	<tr>
+		<td id='menu'>
+	  	 		<%= link_to "Кафе Гурман - актуальное меню", ("/")%>
+				<%= link_to "КРЦ МИР", ("/shop/mir")%>
+				<%= link_to "Ферма Шашлыково", ("/shop/shashliki")%>
+                <%= link_to "Доставка", deliveries_path %>
+				<%= link_to "О нас", services_path %>
+				<%= link_to "Акции", stocks_path %>
+				<%= link_to "Контакты", ("/") %>
+        </td>
+	</tr>
+	<tr>
+		<td id='categories'>
+                          <div>
+			<p>По категориям:</p>
+			<% for category in @categories %>
+			<p><%= link_to category.name, :action => :products_by_category, :id => category.id %></p>
+			<%end%>
+		<% permitted_to? :manage, :categories do %>
+			<%= link_to 'Управление категориями', categories_path %>
+		<%end%>
+                          </div>
+		</td>
+		</tr>
+	<tr>
+
+		<td id="content">
+		<% flash.each do |key,value| %>
+         	<div id="flash" class="flash_<%= key %>" >
+          		<span class="message"><%= value %></span>
+         	</div>
+                <% end -%>
+            <%= yield %>
+        </td>
+    </tr>
+
+</table>
+<div id='footer'>
+
+</div>
+</div>
+</body>
+</html>

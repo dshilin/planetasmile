@@ -1,0 +1,11 @@
+<div class='content'>
+<% form_for(@delivery) do |f| %>
+  <%= f.error_messages %>
+  <p><%= label_tag 'Добавить текст на страницу Доставка' %><br/>
+  	<%= f.text_area(:text, :size => "95x10") %>
+  </p>
+  <p>
+    <%= f.submit "Добавить" %>
+  </p>
+<% end %>
+</div>

@@ -1,0 +1,15 @@
+<h1><%= @product.name %></h1>
+  
+<table>
+	<tr>
+		<td><%= image_tag @product.photo.url(:full) %></td>
+		<td class='description'><%= @product.description %></td>
+	</tr>
+	<tr>
+		Цена: <%= number_to_currency(@product.price, :unit => 'руб', :format => "%n %u") %>
+	</tr>
+</table>
+<%= link_to 'Назад', :back %>
+<% permitted_to? :manage, :products do %>
+<%= link_to 'Изменить товар', edit_product_path(@product) %> 
+<%end%>

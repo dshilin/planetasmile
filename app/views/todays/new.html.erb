@@ -1,0 +1,12 @@
+<h2>Составьте меню:</h2>
+<% form_for(@today) do |f| %>
+
+<%= f.date_select :actual_date%>
+   <% for product in @products do%>
+        <li>
+          <%= check_box_tag 'product_ids[]', product.id %>
+          <%= h product.name -%>
+        </li>
+    <% end %>
+<%= submit_tag 'Готово' %>
+<% end %>

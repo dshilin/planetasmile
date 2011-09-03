@@ -1,0 +1,15 @@
+<h1>Редактировать категорию</h1>
+
+<% form_for(@category) do |f| %>
+  <%= f.error_messages %>
+  
+  <p>Укажите категорию<br/>
+  	<%= f.text_field(:name) %>
+  </p>
+  
+  <p>
+    <%= f.submit "Обновить" %>
+  </p>
+<% end %>
+
+<%= link_to 'Назад', categories_path %>

@@ -1,0 +1,17 @@
+<h1>Категории</h1>
+
+<table>
+<% for category in @categories %>
+  <tr>
+  	<td><h2><%= category.name %></h2></td>
+  </tr>
+  <tr>
+    <td><%= link_to 'Редактировать', edit_category_path(category) %>
+	<%= link_to 'Удалить', category, :confirm => 'Уверены?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новая категория', new_category_path %>

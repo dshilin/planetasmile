@@ -1,0 +1,39 @@
+<div id='order'>
+<h2><%= @order.user.login %></h2>
+<table>
+	<th>Адрес</th>
+        <th>Email</th>
+	<th>Телефон</th>
+	<th>Имя</th>
+	<th>Комментарий</th>
+	<th>Дата</th>
+	<tr>
+		<td><%= @order.adress %></td>
+                <td><%= @order.user.email %></td>
+		<td><%= @order.contact_phone %></td>
+		<td><%= @order.contact_name %></td>
+		<td><%= @order.comment %></td>
+		<td id='ordertime'><%= @order.created_at.strftime('%d-%m-%Y  %H:%M') %></td>
+	</tr>
+</table>
+<br />
+<h2>Заказанные товары:</h2>
+<table>
+	<th>Название</th>
+	<th>Количество</th>
+	<th>Сумма</th>
+	<% for li in @order.line_items %>
+	<tr>
+		<td><%= li.product.name %></td>
+		<td><%= li.quantity %></td>
+		<td><%= li.total_price %></td>
+	</tr>
+	<%end%>
+</table>
+<br />
+<%if @order.archive == 0%>
+<%= button_to 'Доставлено', :action=>:add_to_archive, :id=>@order.id %>
+<br />
+<%end%>
+<%= link_to 'Назад', :back %>
+</div>

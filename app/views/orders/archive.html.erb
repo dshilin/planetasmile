@@ -1,0 +1,15 @@
+<h1>Список доставленных заказов</h1>
+<%= link_to 'Просмотреть заказы', orders_path %>
+<table>
+	<% for order in @orders%>
+  <tr>
+  	<td><h2><%= order.user.login %></h2></td>
+	<td><h2><%= order.created_at.strftime('%d-%m-%Y  %H:%M') %></h2></td>
+  </tr>
+
+
+  <tr>
+    <td><%= link_to 'Просмотреть', order %></td>
+  </tr>
+<% end %>
+</table>
