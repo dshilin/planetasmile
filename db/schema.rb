@@ -9,10 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110125202207) do
+ActiveRecord::Schema.define(:version => 20110906132649) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "categories_customers", :id => false, :force => true do |t|
+    t.integer "category_id", :null => false
+    t.integer "customer_id", :null => false
+  end
+
+  create_table "customers", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "deliveries", :force => true do |t|
@@ -52,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20110125202207) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "customer_id"
   end
 
   create_table "roles", :force => true do |t|

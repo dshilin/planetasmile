@@ -1,0 +1,15 @@
+<table>
+	<% for customer in @customers -%>
+	<tr>
+		<td colspan="2"><h1><%= customer.name %></h1></td>
+	</tr>
+	<tr>
+		<td><%= link_to image_tag(customer.photo.url(:medium)), {:controller=>"shop", :action=>"products_by_customer", :id=>customer.id} %></td>
+		<td class='description' align="left"><%= short_description(customer) %></td>
+	</tr>
+	<%end%>
+</table>
+<br /><br />
+<% permitted_to? :manage, :customers do %>
+    <%= link_to 'Добавить элемент', new_customer_path %>
+<% end %>

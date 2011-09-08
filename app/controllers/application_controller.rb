@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :find_categories
+#  before_filter :find_categories
   before_filter :find_user_cart
   helper :all # include all helpers, all the time
   include AuthenticatedSystem

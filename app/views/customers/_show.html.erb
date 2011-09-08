@@ -1,0 +1,11 @@
+<h1><%= @customer.name %></h1>
+  
+<table>
+	<tr>
+		<td><%= image_tag @customer.photo.url(:full) %></td>
+		<td class='description'><%= @customer.description %></td>
+	</tr>
+</table>
+<% permitted_to? :manage, :customers do %>
+<%= link_to 'Изменить', edit_customer_path(@customer) %> 
+<%end%>

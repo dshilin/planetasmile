@@ -1,0 +1,35 @@
+<h1>Editing customer</h1>
+
+<% form_for :customer, @customer, :url => customer_path, :html => { :multipart => true, :method => :put } do |f| %> 
+  
+  <%= f.error_messages %>
+  
+  <p><%= label_tag 'Путь к фото' %><br/>
+  	<%= f.file_field :photo %>
+  </p> 
+    
+  <p>Укажите название customer<br/>
+  	<%= f.text_field(:name) %>
+  </p>
+  
+  <p>Укажите описание<br/>
+  	<%= f.text_area(:description) %>
+  </p>
+  
+  <% unless @categories.empty? %>
+  <fieldset id="customer_categories"><legend>Категории</legend>
+  <% @categories.each do |category| %>
+    <label>
+    <%= check_box_tag 'customer[category_ids][]', category.id, @customer.categories.include?(category) %>
+	<%=category.name%>
+    </label>
+  <% end %>
+  </fieldset>
+  <% end %>
+      
+  <p>
+    <%= f.submit "Изменить" %>
+  </p>
+<% end %>
+
+<%= link_to 'Назад', customers_path %>

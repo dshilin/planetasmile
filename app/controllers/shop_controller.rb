@@ -14,8 +14,16 @@ class ShopController < ApplicationController
   end
 
 def products_by_category
-  @category = Category.find(params[:id])
-  @products = Product.paginate :page => params[:page], :conditions=>{:category_id => params[:id]}, :order => 'category_id, name'
+  @customer = Customer.find(params[:id])
+  @category = Category.find(params[:category_id])
+  @products = @customer.products.paginate :page => params[:page], :conditions=>{:category_id => params[:category_id]}, :order => 'category_id, name'
+  render :layout => 'prod'
+end
+
+def products_by_customer
+  @customer = Customer.find(params[:id])
+  @categories = @customer.categories
+  @products = @customer.products.paginate :page => params[:page], :order => 'category_id, name'
   render :layout => 'prod'
 end
 

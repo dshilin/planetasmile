@@ -56,12 +56,13 @@
 				<%= link_to "Контакты", ("/") %>
         </td>
 	</tr>
+	<% if @customer && @categories && !@categories.empty?%>
 	<tr>
 		<td id='categories'>
                           <div>
 			<p>По категориям:</p>
 			<% for category in @categories %>
-			<p><%= link_to category.name, :action => :products_by_category, :id => category.id %></p>
+			<p><%= link_to category.name, :action => :products_by_category, :id=>@customer.id, :category_id => category.id %></p>
 			<%end%>
 		<% permitted_to? :manage, :categories do %>
 			<%= link_to 'Управление категориями', categories_path %>
@@ -69,6 +70,7 @@
                           </div>
 		</td>
 		</tr>
+		<%end%>
 	<tr>
 
 		<td id="content">

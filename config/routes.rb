@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :customers
+
   map.resources :stocks
 
   map.resources :todays
@@ -23,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :products
   
-  map.home '', :controller => "shop"
+  map.home '', :controller => "customers"
 
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 

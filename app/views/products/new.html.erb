@@ -21,6 +21,8 @@
   </p>
 
   <%= select(:product, :category_id, Category.all.collect {|p| [p.name, p.id]}, {:include_blank => true, :selected => nil}) %>
+  
+  <%= select(:product, :customer_id, Customer.all.collect {|p| [p.name, p.id]}, {:include_blank => true, :selected => nil}) %>
       
   <p>
     <%= f.submit "Добавить" %>
