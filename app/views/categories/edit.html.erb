@@ -7,6 +7,10 @@
   	<%= f.text_field(:name) %>
   </p>
   
+  <p>Выберите продавца<br/>
+    <%= f.select :customer_id, Customer.all.collect {|t| [t.name, t.id]}, :required => true %>
+  </p>
+  
   <p>
     <%= f.submit "Обновить" %>
   </p>

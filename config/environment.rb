@@ -74,4 +74,6 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
   config.active_record.observers = :user_observer
 end
-require "will_paginate"
+Rails::Initializer.run do |config|
+  config.gem 'will_paginate', :version => '~> 2.3.16'
+end

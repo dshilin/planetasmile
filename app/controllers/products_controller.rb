@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
+    @categories ||= [] 
     
     respond_to do |format|
       format.html # new.html.erb
@@ -31,6 +32,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @categories ||= [] 
   end
 
   # POST /products
@@ -38,7 +40,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     respond_to do |format|
-      if @product.save
+     if @product.save
         flash[:notice] = 'Товар успешно добавлен.'
         format.html { redirect_to(@product) }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
@@ -77,4 +79,16 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def since
+    if params[:product]
+      @categories= Category.find(:all,:conditions=>"customer_id=#{params[:product]}")
+    else
+      @categories=[]
+    end
+    respond_to do |format|
+      format.html { redirect_to :action => 'new' }
+      format.js { render :partial => 'categories', :object => @categories }
+    end
+  end  
 end

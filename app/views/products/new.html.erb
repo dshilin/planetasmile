@@ -1,7 +1,7 @@
 <h1>Добавить в каталог товар</h1>
 
-<% form_for :product, :url => products_path, :html => { :multipart => true } do |f| %>
-  
+<% form_for (@product) do |f| %>
+
   <%= f.error_messages %>
   
   <p><%= label_tag 'Путь к фото' %><br/>
@@ -19,14 +19,29 @@
   <p>Укажите цену товара<br/>
   	<%= f.text_field(:price) %>
   </p>
-
-  <%= select(:product, :category_id, Category.all.collect {|p| [p.name, p.id]}, {:include_blank => true, :selected => nil}) %>
   
-  <%= select(:product, :customer_id, Customer.all.collect {|p| [p.name, p.id]}, {:include_blank => true, :selected => nil}) %>
-      
+  <p>Выберите продавца<br/>
+  <%= select("product.category", "customer_id",
+                         Customer.all.collect{|t| [t.name, t.id]},
+                         {:include_blank=>true}, {:id=>"product_customer_id"})
+  %>
+  </p>
+  
+  <p id="category_id">
+  	 <%= render :partial => 'categories', :object => @categories %>
+  </p>
+     
   <p>
     <%= f.submit "Добавить" %>
   </p>
+  
 <% end %>
 
 <%= link_to 'Назад', products_path %>
+
+<%= observe_field "product_customer_id",
+:url => {:action => :since },
+:update => :category_id,
+      :with => "product"
+      %>
+

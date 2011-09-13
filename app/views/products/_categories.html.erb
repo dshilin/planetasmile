@@ -1,0 +1,4 @@
+Выберите категорию<br/>
+<%= select("product", "category_id",
+                         categories.collect{|t| [t.name, t.id]},
+                         {:include_blank=>true}, {:id => "category_customer_id"}) %>

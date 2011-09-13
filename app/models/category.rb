@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  belongs_to :product
-  has_and_belongs_to_many :customers
+  belongs_to :customer
+  has_many :products
   validates_presence_of :name 
 end

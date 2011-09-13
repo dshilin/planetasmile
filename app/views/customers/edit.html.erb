@@ -15,17 +15,6 @@
   <p>Укажите описание<br/>
   	<%= f.text_area(:description) %>
   </p>
-  
-  <% unless @categories.empty? %>
-  <fieldset id="customer_categories"><legend>Категории</legend>
-  <% @categories.each do |category| %>
-    <label>
-    <%= check_box_tag 'customer[category_ids][]', category.id, @customer.categories.include?(category) %>
-	<%=category.name%>
-    </label>
-  <% end %>
-  </fieldset>
-  <% end %>
       
   <p>
     <%= f.submit "Изменить" %>
