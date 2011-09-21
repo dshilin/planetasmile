@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  validates_presence_of :name, :price, :description, :category_id
+  validates_presence_of :name, :price, :description, :category_id, :customer_id
   has_many :line_items
   belongs_to :category
   has_attached_file :photo, :styles => { :medium => "140x180>", :full => "300x300>" }

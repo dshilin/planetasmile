@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
   def index
-    @products = Product.find(:all)    
+    @products = Product.find(:all)
+    @categories ||= []
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
@@ -39,6 +40,7 @@ class ProductsController < ApplicationController
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
+    @categories ||= []
     respond_to do |format|
      if @product.save
         flash[:notice] = 'Товар успешно добавлен.'
@@ -81,7 +83,7 @@ class ProductsController < ApplicationController
   end
   
   def since
-    if params[:product]
+    if params[:product] && !params[:product].empty?
       @categories= Category.find(:all,:conditions=>"customer_id=#{params[:product]}")
     else
       @categories=[]
