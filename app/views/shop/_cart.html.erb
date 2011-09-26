@@ -1,1 +1,18 @@
 <%= link_to "Ваша корзина содержит " + @cart.total_items.to_s + " товаров. Сумма покупки: " + @cart.total_price.to_s + " руб", {:controller=>:shop, :action=>:show_cart}, :id=>"rcart" %>
+ <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js'></script>
+ <script type="text/javascript">
+ var cart = null;
+ $(document).ready(function(){
+ cart = $(window).height() - 96;
+
+ $(window).scroll(function () { 
+ var offset = cart - $('.float').height() + $(document).scrollTop() + "px";
+ $('.float').animate({top:offset},{duration:1000,queue:false});
+ });
+
+ });
+ </script>
+
+<div class="float">
+ <%= link_to "Ваша корзина содержит " + @cart.total_items.to_s + " товаров. Сумма покупки: " + @cart.total_price.to_s + " руб", {:controller=>:shop, :action=>:show_cart}, :id=>"rcart" %> 
+ </div>

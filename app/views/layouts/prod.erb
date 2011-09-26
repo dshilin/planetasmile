@@ -42,7 +42,7 @@
 			<p/>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_function "Войти", "$(this).up('form').submit()" %> / <%=link_to 'Регистрация', '/signup', :rel=>"facebox"%>
 			<% end -%>
 		<%end%>
-                <div id="cart"><%= render(:partial => "cart" , :object => @cart)%></div>
+                <div id="cart"><%= render(:partial => "shop/cart" , :object => @cart)%></div>
         </td>
     </tr>
 	<tr>
